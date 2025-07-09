@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal da Transparência | Instituto Encoraja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --laranja: #F69053;
+            --lilas: #702054;
+            --branco: #FFFFFF;
+            --preto-suave: #333333;
+            --cinza-claro: #f8f9fa;
+            --cinza-borda: #dee2e6;
+            --sombra: 0 4px 15px rgba(0, 0, 0, 0.07);
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cinza-claro);
+            color: var(--preto-suave);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .header-transparencia {
+            background-color: var(--lilas);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header-transparencia img {
+            max-width: 250px;
+            height: auto;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: var(--branco);
+            border-radius: 15px;
+            box-shadow: var(--sombra);
+        }
+        h1 {
+            color: var(--lilas);
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        h1::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--laranja);
+            margin: 10px auto 40px;
+            border-radius: 2px;
+        }
+        p.intro {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        .document-list h2 {
+            color: var(--lilas);
+            border-bottom: 2px solid var(--cinza-borda);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        .document-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: var(--preto-suave);
+            background-color: #fff;
+            border: 1px solid var(--cinza-borda);
+            transition: all 0.3s ease;
+        }
+        .document-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: var(--laranja);
+        }
+        .document-item .icon {
+            width: 40px;
+            height: 40px;
+            color: var(--laranja);
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .document-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+        }
+        .document-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin: 40px auto 0;
+            padding: 12px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            background-color: var(--laranja);
+            color: var(--branco);
+            box-shadow: 0 4px 15px rgba(246, 144, 83, 0.3);
+            text-align: center;
+        }
+        .btn-voltar:hover {
+            background-color: #e57a3e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(246, 144, 83, 0.4);
+        }
+        .centered-button {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-transparencia">
+        <a href="index.html"><img src="img/logo_horizontal.png" alt="Instituto Encoraja logo"></a>
+    </header>
+
+    <div class="container">
+        <h1>Portal da Transparência</h1>
+        <p class="intro">Acreditamos que a transparência é um pilar fundamental para construir confiança. Aqui você encontra os documentos que detalham nossa atuação e a gestão dos recursos.</p>
+
+        <div class="document-list">
+            <h2>Relatórios e Prestações de Contas</h2>
+            <a href="docs/relatorio_anual_2024.pdf" target="_blank" class="document-item">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <div class="document-info">
+                    <h3>Relatório Anual de Atividades - 2024</h3>
+                    <p>Veja um resumo completo de nossas ações, projetos e impacto ao longo de 2024.</p>
+                </div>
+            </a>
+            <a href="docs/prestacao_contas_2024.pdf" target="_blank" class="document-item">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="1" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <div class="document-info">
+                    <h3>Demonstrativo Financeiro - 2024</h3>
+                    <p>Acesse a prestação de contas detalhada, com a origem e aplicação dos recursos financeiros.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="document-list" style="margin-top: 50px;">
+            <h2>Documentos Institucionais</h2>
+            <a href="docs/estatuto_social.pdf" target="_blank" class="document-item">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <div class="document-info">
+                    <h3>Estatuto Social</h3>
+                    <p>Conheça os princípios, objetivos e as regras que regem o Instituto Encoraja.</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="centered-button">
+            <a href="index.html" class="btn-voltar">Retornar à Página Inicial</a>
+        </div>
+    </div>
+
+</body>
+</html>
