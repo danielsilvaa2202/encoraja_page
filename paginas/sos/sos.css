@@ -1,0 +1,528 @@
+:root {
+    --lilas-sos: #702054;
+    --laranja-sos: #F69053;
+    --branco-sos: #FFFFFF;
+    --cinza-claro-sos: #f9f6f8;
+    --preto-suave-sos: #333;
+}
+
+/* --- Ajuste do Header para a página SOS --- */
+#header {
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
+    background-color: var(--branco-sos);
+}
+
+#header.header-hidden {
+    transform: translateY(-100%);
+    box-shadow: none;
+}
+
+.sos-nav-floating {
+    transition: top 0.4s ease-in-out;
+}
+
+.sos-nav-floating.nav-sticky-top {
+    top: 0;
+}
+
+/* --- Seção Hero --- */
+#sos-hero {
+    height: 85vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url('img/main_sos.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    background-attachment: fixed;
+    color: var(--branco-sos);
+    text-align: center;
+    padding-bottom: 120px;
+}
+
+#sos-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 15%, rgba(0,0,0,0) 60%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 0 20px;
+    transform: translateY(30px); /* Puxa o conteúdo para baixo */
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--laranja-sos); /* Cor laranja aplicada */
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    font-weight: 300;
+    opacity: 0.95;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+/* --- Menu Flutuante --- */
+.sos-nav-floating {
+    position: sticky;
+    top: 70px;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin: -60px auto 0 auto;
+    width: fit-content;
+    max-width: 90%;
+}
+
+.sos-nav-floating .container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 15px;
+    flex-wrap: wrap;
+}
+
+.sos-nav-floating a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--lilas-sos);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+.sos-nav-floating a:hover {
+    background-color: var(--cinza-claro-sos);
+    color: var(--lilas-sos);
+}
+
+.sos-nav-floating a.active {
+    background-color: var(--lilas-sos);
+    color: var(--branco-sos);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(112, 32, 84, 0.3);
+}
+
+/* --- Estilos Gerais de Seção --- */
+.content-section {
+    padding: 100px 20px;
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--lilas-sos);
+}
+
+.content-section .section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #666;
+}
+
+/* --- Seção Violência Doméstica --- */
+#violencia {
+    background-color: var(--branco-sos);
+    padding-top: 120px;
+}
+
+.violencia-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Apenas uma coluna */
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 80px auto;
+}
+
+.violencia-text-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.violencia-text-content p {
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.indicadores-wrapper {
+    margin-top: 80px;
+    background-color: var(--cinza-claro-sos);
+    padding: 60px 40px;
+    border-radius: 20px;
+}
+
+.indicadores-wrapper h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--lilas-sos);
+    margin-bottom: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
+    gap: 30px;
+}
+
+/* Grid 2x2 para telas maiores */
+@media (min-width: 600px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+.stat-card {
+    background: var(--branco-sos);
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--laranja-sos);
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.stat-card .icon {
+    width: 44px;
+    height: 44px;
+    color: var(--laranja-sos);
+    margin-bottom: 15px;
+}
+
+.stat-card p {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+}
+
+.stat-card span {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* --- Seção Preciso de Ajuda --- */
+#ajuda {
+    background: linear-gradient(to bottom, var(--cinza-claro-sos), #fdf9fc);
+}
+
+.help-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.help-text h4 {
+    color: var(--lilas-sos);
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.violence-types-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.violence-type-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--branco-sos);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid var(--laranja-sos);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.violence-type-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.violence-type-card i {
+    color: var(--lilas-sos);
+    flex-shrink: 0;
+}
+
+.violence-type-card strong {
+    display: block;
+    color: var(--preto-suave-sos);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.violence-type-card span {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+.help-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cta-block {
+    background: var(--branco-sos);
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--preto-suave-sos);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+}
+
+.cta-block.whatsapp {
+    background-color: #e7f8f0;
+}
+
+.cta-block:hover {
+    transform: scale(1.03);
+    border-color: var(--laranja-sos);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.cta-block .icon {
+    width: 48px;
+    height: 48px;
+    color: var(--lilas-sos);
+    margin-bottom: 10px;
+}
+
+.cta-block.whatsapp .icon {
+    color: #25D366;
+}
+
+.cta-block h3 {
+    margin: 5px 0 5px 0;
+    color: var(--lilas-sos);
+    font-size: 1.3rem;
+}
+
+.btn-localizar {
+    background-color: var(--laranja-sos);
+    color: var(--branco-sos);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-localizar:hover {
+    background-color: #e67e22;
+    transform: scale(1.05);
+}
+
+/* --- Seção Ciclo da Violência --- */
+#ciclo {
+    background-color: var(--branco-sos);
+}
+
+.cycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.cycle-card {
+    background-color: var(--cinza-claro-sos);
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cycle-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.cycle-number {
+    position: absolute;
+    top: -22px;
+    width: 44px;
+    height: 44px;
+    background: var(--lilas-sos);
+    color: var(--branco-sos);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border: 4px solid var(--branco-sos);
+    transition: background-color 0.3s ease;
+}
+
+.cycle-card:hover .cycle-number {
+    background-color: var(--laranja-sos);
+}
+
+.cycle-card .icon {
+    width: 50px;
+    height: 50px;
+    color: var(--laranja-sos);
+    margin: 20px 0;
+}
+
+.cycle-card h3 {
+    color: var(--lilas-sos);
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+.cycle-footer {
+    margin-top: 60px;
+    padding: 25px;
+    background-color: #fffbeb;
+    border-left: 5px solid var(--laranja-sos);
+    text-align: center;
+    border-radius: 0 8px 8px 0;
+}
+
+/* --- Seção Leis --- */
+#leis {
+    background-color: var(--cinza-claro-sos);
+}
+
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background-color: var(--branco-sos);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.accordion-item.active {
+    border-color: var(--lilas-sos);
+    box-shadow: 0 5px 25px rgba(112, 32, 84, 0.1);
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.accordion-header h4 {
+    margin: 0;
+    color: var(--lilas-sos);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.accordion-icon {
+    transition: transform 0.4s ease;
+    color: var(--lilas-sos);
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.accordion-content p {
+    padding: 0 25px 20px 25px;
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* --- Media Queries (Responsivo) --- */
+@media (max-width: 992px) {
+    .help-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    #sos-hero {
+        height: 80vh;
+        min-height: 550px;
+        padding-bottom: 100px;
+    }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1.1rem; }
+
+    .sos-nav-floating {
+        /* O menu flutuante agora tem top:0 quando a classe .nav-sticky-top é adicionada */
+        /* Mantém o valor inicial para o estado padrão */
+        top: 70px; 
+        position: sticky;
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0;
+    }
+
+    .sos-nav-floating.nav-sticky-top {
+        top: 0px; /* Garante que ele cole no topo quando o header sumir */
+    }
+
+    .sos-nav-floating a { font-size: 0.9rem; padding: 8px 12px;}
+    .content-section { padding: 80px 20px; }
+    #violencia { padding-top: 80px; }
+    .content-section h2 { font-size: 2rem; }
+}

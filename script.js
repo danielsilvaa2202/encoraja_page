@@ -121,4 +121,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
         startAutoScroll();
     }
+
+    // --- LÓGICA DO CÍRCULO E MODAL ODS ---
+    const odsCircle = document.getElementById('ods-interactive-circle');
+    if (odsCircle) {
+        const odsPaths = odsCircle.querySelectorAll('path');
+        const modalOverlay = document.getElementById('ods-modal-overlay');
+        const modalClose = document.getElementById('ods-modal-close');
+
+        // Lógica para os popovers no hover
+        odsPaths.forEach(path => {
+            const odsNumber = path.dataset.ods;
+            const popover = document.getElementById(`ods-popover-${odsNumber}`);
+            
+            path.addEventListener('mouseover', () => {
+                if(popover) popover.classList.add('visible');
+            });
+
+            path.addEventListener('mouseout', () => {
+                if(popover) popover.classList.remove('visible');
+            });
+        });
+
+        // Lógica para abrir o modal
+        odsCircle.addEventListener('click', () => {
+            modalOverlay.classList.add('visible');
+        });
+
+        // Lógica para fechar o modal
+        const closeModal = () => {
+            modalOverlay.classList.remove('visible');
+        }
+        
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    }
 });
