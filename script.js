@@ -1,10 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
     AOS.init({
         duration: 800,
         once: true,
         offset: 50,
     });
+
+    function initHeroSlideshow() {
+        const slides = document.querySelectorAll('.hero-slide');
+        if (slides.length <= 1) return;
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 6000);
+    }
+    initHeroSlideshow();
 
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -14,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
-    
+
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             if (navMenu.classList.contains('active')) {
@@ -78,7 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
             stopAutoScroll();
             autoScrollInterval = setInterval(() => {
                 const isAtEnd = timelineWrapper.scrollLeft + timelineWrapper.clientWidth >= timelineWrapper.scrollWidth - 5;
-                
                 if (isAtEnd) {
                     timelineWrapper.scrollTo({ left: 0, behavior: 'instant' });
                 } else {
@@ -107,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 resetAutoScroll();
             });
-
             prevBtn.addEventListener('click', () => {
                 timelineWrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 resetAutoScroll();
@@ -121,19 +130,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         startAutoScroll();
     }
-
-    // --- LÓGICA DO CÍRCULO E MODAL ODS ---
-    const odsCircle = document.getElementById('ods-interactive-circle');
-    if (odsCircle) {
-        const odsPaths = odsCircle.querySelectorAll('path');
+    
+    const odsCircleContainer = document.getElementById('ods-circle-container');
+    if (odsCircleContainer) {
+        const odsPaths = odsCircleContainer.querySelectorAll('svg path');
+        const unLogoLink = document.getElementById('un-logo-link');
         const modalOverlay = document.getElementById('ods-modal-overlay');
         const modalClose = document.getElementById('ods-modal-close');
 
-        // Lógica para os popovers no hover
+        const openModal = () => {
+            if (modalOverlay) modalOverlay.classList.add('visible');
+        };
+
+        const closeModal = () => {
+            if (modalOverlay) modalOverlay.classList.remove('visible');
+        };
+
         odsPaths.forEach(path => {
             const odsNumber = path.dataset.ods;
             const popover = document.getElementById(`ods-popover-${odsNumber}`);
             
+            path.addEventListener('click', openModal);
+
             path.addEventListener('mouseover', () => {
                 if(popover) popover.classList.add('visible');
             });
@@ -143,21 +161,21 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Lógica para abrir o modal
-        odsCircle.addEventListener('click', () => {
-            modalOverlay.classList.add('visible');
-        });
-
-        // Lógica para fechar o modal
-        const closeModal = () => {
-            modalOverlay.classList.remove('visible');
+        if (unLogoLink) {
+            unLogoLink.addEventListener('click', (event) => {
+                event.stopPropagation();
+            });
         }
         
-        modalClose.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (event) => {
-            if (event.target === modalOverlay) {
-                closeModal();
-            }
-        });
+        if (modalClose) {
+            modalClose.addEventListener('click', closeModal);
+        }
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (event) => {
+                if (event.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+        }
     }
 });
