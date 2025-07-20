@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function animateCounters() {
         const counters = document.querySelectorAll('.counter');
-        const speed = 200; 
+        const speed = 200;
         counters.forEach(counter => {
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const resetAutoScroll = () => {
             stopAutoScroll();
             clearTimeout(autoScrollTimeout);
-            autoScrollTimeout = setTimeout(startAutoScroll, 10000); 
+            autoScrollTimeout = setTimeout(startAutoScroll, 10000);
         };
 
         if (nextBtn && prevBtn) {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 resetAutoScroll();
             });
         }
-        
+
         timelineWrapper.addEventListener('mouseenter', stopAutoScroll);
         timelineWrapper.addEventListener('mouseleave', resetAutoScroll);
         timelineWrapper.addEventListener('wheel', () => resetAutoScroll(), { passive: true });
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         startAutoScroll();
     }
-    
+
     const odsCircleContainer = document.getElementById('ods-circle-container');
     if (odsCircleContainer) {
         const odsPaths = odsCircleContainer.querySelectorAll('svg path');
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
         odsPaths.forEach(path => {
             const odsNumber = path.dataset.ods;
             const popover = document.getElementById(`ods-popover-${odsNumber}`);
-            
+
             path.addEventListener('click', openModal);
 
             path.addEventListener('mouseover', () => {
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 event.stopPropagation();
             });
         }
-        
+
         if (modalClose) {
             modalClose.addEventListener('click', closeModal);
         }
@@ -177,5 +177,94 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
+    }
+
+    const violentometroCardsWrapper = document.getElementById('violentometro-cards-wrapper');
+    if (violentometroCardsWrapper) {
+        const dadosViolentometro = [
+            {
+                titulo: "Cuidado",
+                subtitulo: "A violência, às vezes, tenta se disfarçar",
+                icone: "alert-triangle",
+                classe: "cuidado",
+                itens: [
+                    "Piadas ofensivas",
+                    "Chantagens",
+                    "Mentiras",
+                    "Humilhações em público",
+                    "Ciúmes excessivo"
+                ]
+            },
+            {
+                titulo: "Reaja!",
+                subtitulo: "Não se destrua!",
+                icone: "shield-alert",
+                classe: "reaja",
+                itens: [
+                    "Intimidar",
+                    "Ameaçar",
+                    "Controlar ou proibir",
+                    "Destruir bens pessoais",
+                    "Machucar",
+                    "Prender ou confinar",
+                    "Ameaça com objetos ou armas"
+                ]
+            },
+            {
+                titulo: "Peça Ajuda!",
+                subtitulo: "Sua vida está em perigo.",
+                icone: "phone-outgoing",
+                classe: "peca-ajuda",
+                itens: [
+                    "Ameaça de morte",
+                    "Forçar uma relação sexual",
+                    "Abuso sexual",
+                    "Violentar ou te mutilar",
+                    "MATAR"
+                ]
+            }
+        ];
+
+        dadosViolentometro.forEach(categoria => {
+            const categoriaDiv = document.createElement('div');
+            categoriaDiv.className = `violentometro-card categoria-${categoria.classe}`;
+
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'violentometro-header';
+            
+            const tituloH4 = document.createElement('h4');
+            tituloH4.className = 'violentometro-titulo';
+            tituloH4.innerHTML = `<i data-lucide="${categoria.icone}"></i> ${categoria.titulo}`;
+            
+            headerDiv.appendChild(tituloH4);
+
+            if (categoria.subtitulo) {
+                const subtituloP = document.createElement('p');
+                subtituloP.className = 'violentometro-subtitulo';
+                subtituloP.textContent = categoria.subtitulo;
+                headerDiv.appendChild(subtituloP);
+            }
+
+            const listaUl = document.createElement('ul');
+            listaUl.className = 'violentometro-lista';
+
+            categoria.itens.forEach(itemText => {
+                const itemLi = document.createElement('li');
+                itemLi.className = 'violentometro-item';
+                itemLi.innerHTML = `<span></span>${itemText}`;
+                
+                if (itemText.toUpperCase() === 'MATAR') {
+                    itemLi.classList.add('extremo');
+                }
+
+                listaUl.appendChild(itemLi);
+            });
+
+            categoriaDiv.appendChild(headerDiv);
+            categoriaDiv.appendChild(listaUl);
+            violentometroCardsWrapper.appendChild(categoriaDiv);
+        });
+
+        lucide.createIcons();
     }
 });

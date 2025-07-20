@@ -1,12 +1,17 @@
 :root {
     --laranja: #F69053;
     --lilas: #702054;
+    --lilas-claro: #f4e9f0;
     --branco: #FFFFFF;
     --preto-suave: #333333;
     --cinza-claro: #f8f9fa;
     --cinza-borda: #dee2e6;
     --sombra: 0 4px 15px rgba(0, 0, 0, 0.07);
     --sombra-forte: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --cuidado-cor: #f5c518;
+    --reaja-cor: #F69053;
+    --ajuda-cor: #e74c3c;
+    --extremo-cor: #702054;
 }
 * {
     margin: 0;
@@ -43,7 +48,7 @@ section {
 section:nth-of-type(odd) {
     background-color: var(--cinza-claro);
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-weight: 700;
     color: var(--lilas);
 }
@@ -199,7 +204,7 @@ h2::after {
     justify-content: center;
     text-align: center;
     color: var(--branco);
-    position: relative; 
+    position: relative;
 }
 .hero-slideshow {
     position: absolute;
@@ -898,6 +903,158 @@ h2::after {
     color: var(--preto-suave);
     margin: 0;
 }
+
+
+/* --- SEÇÃO VIOLENTÔMETRO ATUALIZADA (VISUAL INCRÍVEL) --- */
+#rede-da-mulher {
+    background: linear-gradient(175deg, var(--branco) 0%, var(--lilas-claro) 100%);
+}
+
+.violentometro-container-novo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.imagem-wrapper-topo {
+    max-width: 450px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--sombra-forte);
+    border: 6px solid var(--branco);
+}
+
+.imagem-wrapper-topo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.violentometro-horizontal-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 10px;
+    cursor: grab;
+    scrollbar-width: thin;
+    scrollbar-color: var(--laranja) var(--cinza-claro);
+}
+.violentometro-horizontal-container:active {
+    cursor: grabbing;
+}
+.violentometro-horizontal-container::-webkit-scrollbar {
+    height: 8px;
+}
+.violentometro-horizontal-container::-webkit-scrollbar-track {
+    background: var(--cinza-claro);
+    border-radius: 10px;
+}
+.violentometro-horizontal-container::-webkit-scrollbar-thumb {
+    background-color: var(--laranja);
+    border-radius: 10px;
+    border: 2px solid var(--cinza-claro);
+}
+
+#violentometro-cards-wrapper {
+    display: inline-flex;
+    gap: 30px;
+    justify-content: flex-start;
+}
+
+.violentometro-card {
+    flex: 0 0 320px; /* Largura fixa para cada card */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: var(--sombra);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Garante que todos tenham a mesma altura */
+}
+.violentometro-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: var(--sombra-forte);
+}
+
+.violentometro-header {
+    border-left: 5px solid;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.categoria-cuidado .violentometro-header { border-color: var(--cuidado-cor); }
+.categoria-reaja .violentometro-header { border-color: var(--reaja-cor); }
+.categoria-peca-ajuda .violentometro-header { border-color: var(--ajuda-cor); }
+
+.violentometro-titulo {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+.categoria-cuidado .violentometro-titulo { color: var(--cuidado-cor); }
+.categoria-reaja .violentometro-titulo { color: var(--reaja-cor); }
+.categoria-peca-ajuda .violentometro-titulo { color: var(--ajuda-cor); }
+
+.violentometro-subtitulo {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.violentometro-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.violentometro-item {
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.violentometro-item span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.categoria-cuidado .violentometro-item span { background-color: var(--cuidado-cor); }
+.categoria-reaja .violentometro-item span { background-color: var(--reaja-cor); }
+.categoria-peca-ajuda .violentometro-item span { background-color: var(--ajuda-cor); }
+
+.violentometro-item.extremo {
+    font-weight: 700;
+    color: var(--extremo-cor);
+}
+.violentometro-item.extremo span {
+    background-color: var(--extremo-cor);
+}
+
+.violentometro-ajuda-link {
+    text-align: center;
+    margin-top: 20px;
+}
+.violentometro-ajuda-link .btn-primary {
+    background-color: var(--lilas);
+}
+.violentometro-ajuda-link .btn-primary:hover {
+    background-color: #52183e;
+}
+
+
 @media (max-width: 992px) {
     h2 { font-size: 2.2rem; }
     #inicio h1 { font-size: 2.8rem; }
@@ -913,14 +1070,19 @@ h2::after {
     .logo-grid.selos img { max-height: 60px; }
     .ods-main-title { font-size: 2.2rem; }
     #ods-circle-container { width: 260px; height: 260px; }
+
+    .violentometro-card {
+        flex: 0 0 290px;
+    }
 }
+
 @media (max-width: 768px) {
     section, #impacto { padding: 60px 0; }
     #quem-somos { padding-top: 60px; }
     .impact-numbers-grid { grid-template-columns: 1fr; }
     .impact-card .counter { font-size: 3rem; }
     .contact-grid { grid-template-columns: 1fr; }
-    #ods-modal-content { 
+    #ods-modal-content {
         padding: 30px 25px;
         width: 95%;
         max-height: 85vh;
@@ -944,7 +1106,7 @@ h2::after {
         padding: 0;
         font-size: 2rem;
     }
-    .ods-modal-grid { 
+    .ods-modal-grid {
         flex-direction: column;
         align-items: center;
     }
@@ -997,4 +1159,9 @@ h2::after {
     .hamburger { display: flex; }
     #inicio h1 { font-size: 2.5rem; }
     #inicio .buttons { flex-direction: column; align-items: center; }
+
+    .violentometro-card {
+        flex: 0 0 80%;
+        max-width: 300px;
+    }
 }
